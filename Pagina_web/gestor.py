@@ -229,7 +229,7 @@ def index():
 
 
 messages_to_display=[]
-@app.route('/entrada_bodega', methods=['GET', 'POST'])
+@app.route('/chatbot_page', methods=['GET', 'POST'])
 def entrada_bodega():
     if request.method == 'POST':
         prompt = request.form["texto_usuario"]
@@ -239,7 +239,7 @@ def entrada_bodega():
         if response:
             messages_to_display.append(response.text)
 
-    return render_template('ingresar_bodega.html', messages=messages_to_display)
+    return render_template('chatbot_page.html', messages=messages_to_display)
 
 
 @app.route('/logout')
