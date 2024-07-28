@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar elementos a bodega</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo_ingreso_bodega.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="header">
+
+    </div>
+
+
+    <div class="ventana_chat">
+        <div class="title_zone">
+            <div class="logo_gases">
+                <img src="../static/images/robot.png">
+            </div>
+            <div class="titulo_chat">ChatBot Gases Del Caribe</div>
+        </div>
+        <div class="conversation_zone" id="conversation">
+            {% for message in messages %}
+                {% if loop.index0 % 2 == 0 %}
+                    <div class="message-container user-container">
+                        <div class="user-message">{{ message }}</div>
+                    </div>
+                {% else %}
+                    <div class="message-container bot-container">
+                        <div class="bot-message">{{ message }}</div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="message_zone">
+            <form id="formulario_ingreso" method="post">
+                <input type="text" name="texto_usuario" id="texto_usuario" autocomplete="off" placeholder="Ingrese su mensaje" class="mensaje_usuario"></input>
+                <button type="submit">
+                    <i class="fa fa-paper-plane"></i>
+                </button>
+            </form>
+        
+
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/logica_entrada_bodega.js') }}"></script>
+</body>
+</html>

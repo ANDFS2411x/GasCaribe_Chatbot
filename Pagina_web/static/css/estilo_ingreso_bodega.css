@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
+:root {
+    font-size: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+body{
+  font-family: 'Vibur', cursive;
+  font-family: 'Abel', sans-serif;
+}
+form{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width:30%;
+    height: 100%;
+    justify-content: center;
+}
+  
+a {
+  text-decoration: none; /* Quita el subrayado */
+  color: inherit; /* Hereda el color del texto del elemento padre */
+}
+
+a:visited {
+  color: inherit; /* Evita que los enlaces visitados cambien de color */
+}
+
+a:hover,
+a:focus,
+a:active {
+  color: inherit; /* Evita que los enlaces cambien de color en diferentes estados */
+  outline: none; /* Quita el contorno predeterminado al enfocar */
+} 
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+  p:not(:last-child) {
+    margin-bottom: 1.5em;
+  }
+  
+  body {
+    font: 1em/1.618 Inter, sans-serif;
+    display: flex;
+    flex-wrap: nowrap;
+    min-height: 100vh;
+    min-width: 100vw;
+    padding: 30px;
+    margin: 0;
+    margin-top:0vh;
+    color: #224;
+    justify-content: center;
+    align-items: center;
+    background:
+    url("../images/imagen_principal.png")
+    top / cover no-repeat fixed;
+    flex-direction: column;
+  }
+
+
+
+  .header{
+    height:120px;
+    width:80vw;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: rgba(0,0,0,0.2);
+    padding-left:2rem;
+    padding-right:2rem;
+    border-radius: 20px;
+    margin-bottom: 5vh;
+  }
+
+
+.ventana_chat{
+  height:72vh;
+  width:45vw;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 40px;
+  justify-content: space-around;
+}
+
+
+.title_zone{
+  width: 95%;
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+}
+
+.logo_gases{
+  height: 100%;
+  width: 15%;
+  margin-right: 1vw;
+}
+.logo_gases img{
+  height: 80%;
+  width: 80%;
+  border-radius: 50%;
+  margin:15px;
+  min-width: 90px;
+  outline: white;
+  border: 3px solid white;
+  box-shadow: 0px 0px 12px white;
+
+}
+.titulo_chat{
+  font-size: 25px;
+  height: 100%;
+  width: 80%;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-family: "Abel",sans-serif;
+}
+
+.conversation_zone{
+  height: 65%;
+  width: 95%;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.message_zone{
+  height: 10%;
+  width: 95%;
+  color: white;
+  border-radius: 20px;
+}
+.message_zone form{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.mensaje_usuario{
+  width: 90%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border-radius: 20px 0px 0px 20px;
+
+  padding-left: 10px;
+  outline: none;
+  border: none;
+  font-size: 21px;
+  font-family: "Abel", sans-serif;
+}
+input[type="text"]::placeholder {
+  color:rgb(186, 185, 185); /* Cambia el color según tus necesidades */
+  opacity: 0.8; /* Asegúrate de que el placeholder no sea transparente */
+  font-size: 21px;
+  font-family: "Abel", sans-serif;
+}
+
+button[type="submit"]{
+  background-color: rgba(0,0,0,0.5);
+  border: none;
+  outline: none;
+  width: 10%;
+  border-radius: 0px 20px 20px 0px;
+  cursor: pointer;
+}
+i{
+  color: white;
+  font-size: 20px;
+}
+
+
+.conversation_zone {
+  height: 60%; /* Ajusta esta altura según tus necesidades */
+  overflow-y: auto;
+  padding: 10px;
+  border-radius: 20px;
+  scrollbar-width: none; /* Para Firefox */
+
+}
+
+.message-container {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.user-container {
+  justify-content: flex-end;
+}
+
+.bot-container {
+  justify-content: flex-start;
+}
+
+.user-message, .bot-message {
+  max-width: 70%; /* Ajusta este valor para controlar el ancho máximo de los mensajes */
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.user-message {
+  background-color:#2fb84c;
+color: whitesmoke;
+  align-self: flex-end;
+}
+
+.bot-message {
+  background-color:rgb(37, 115, 216);
+color: whitesmoke;
+}
