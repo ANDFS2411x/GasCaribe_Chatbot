@@ -138,6 +138,7 @@ a:active {
   width: 95%;
   color: white;
   border-radius: 20px;
+  margin-bottom: 15px;
 }
 .message_zone form{
   width: 100%;
@@ -147,7 +148,7 @@ a:active {
 }
 
 .mensaje_usuario{
-  width: 90%;
+  width: 80%;
   height: 100%;
   background-color: rgba(0,0,0,0.5);
   color: white;
@@ -171,12 +172,11 @@ button[type="submit"]{
   border: none;
   outline: none;
   width: 10%;
-  border-radius: 0px 20px 20px 0px;
   cursor: pointer;
 }
 i{
   color: white;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 
@@ -217,4 +217,25 @@ color: whitesmoke;
 .bot-message {
   background-color:rgb(37, 115, 216);
 color: whitesmoke;
+}
+
+.mic-toggle {
+  display: none;
+}
+.mic-icon {
+  font-size: 20px;
+  cursor: pointer;
+color: white;
+}
+.mic-toggle:checked + .mic-icon {
+  color: #007bff;
+}
+
+label{
+display: flex;
+align-items: center;
+justify-content: center;
+width: 10%;
+background-color: rgba(0,0,0,0.5);
+border-radius: 0px 20px 20px 0px;
 }
