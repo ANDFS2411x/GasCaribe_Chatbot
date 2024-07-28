@@ -1,5 +1,5 @@
 import webbrowser
-from flask import Flask, render_template, request,redirect,url_for, session
+from flask import Flask, render_template, request,redirect,url_for, session,jsonify
 import pymysql, socket
 from threading import Timer
 import os
@@ -233,14 +233,12 @@ messages_to_display=[]
 def entrada_bodega():
     if request.method == 'POST':
         prompt = request.form["texto_usuario"]
-        messages_to_display.append(prompt)
-
+        
         response = chat_session.send_message(prompt)
         if response:
-            messages_to_display.append(response.text)
+            return jsonify({"bot_response": response.text})
 
     return render_template('chatbot_page.html', messages=messages_to_display)
-
 
 @app.route('/logout')
 def logout():
