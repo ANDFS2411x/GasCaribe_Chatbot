@@ -3,49 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingresar elementos a bodega</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo_chatbot_page.css') }}">
+    <title>GasCaribe Chatbot</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abel:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Abel|Vibur');
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Abel', sans-serif;
+            background: linear-gradient(-45deg, #0d47a1, #1976d2, #0d47a1, #1976d2);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333; /* Texto gris oscuro */
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .chat-container {
+            background-color: #1e3a8a; /* Azul oscuro */
+            border-radius: 20px;
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(15px);
+            padding: 20px;
+            width: 450px;
+            color: white;
+        }
+
+        .chat-container input[type="text"], .chat-container button {
+            border-radius: 20px;
+            border: none;
+            padding: 15px;
+            font-family: 'Abel', sans-serif;
+        }
+
+        .chat-container input[type="text"] {
+            color: #333; /* Texto negro */
+            background: #e2e8f0; /* Fondo gris claro */
+            flex-grow: 1;
+            margin-right: 10px; /* Añadir margen a la derecha */
+        }
+
+        .chat-container button {
+            background-color: #2563eb; /* Azul más claro */
+            color: white;
+            transition: box-shadow 0.5s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+        }
+
+        .chat-container button:hover {
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
+        }
+
+        .title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo_gases img {
+            width: 44px; /* 10% más grande que 40px */
+            height: 44px; /* 10% más grande que 40px */
+            border-radius: 50%; /* Hacer la imagen circular */
+            margin-right: 10px;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
 </head>
 <body>
-    <div class="header">
-
-    </div>
-
-
-    <div class="ventana_chat">
-        <div class="title_zone">
+    <div class="chat-container">
+        <div class="title-container">
             <div class="logo_gases">
-                <img src="../static/images/robot.png">
+                <img src="../static/images/robot.png" alt="Robot Logo">
             </div>
-            <div class="titulo_chat">ChatBot Gases Del Caribe</div>
+            <h1 class="text-2xl font-bold">GasCaribe Chatbot</h1>
         </div>
-        <div class="conversation_zone" id="conversation">
-            {% for message in messages %}
-                {% if loop.index0 % 2 == 0 %}
-                    <div class="message-container user-container">
-                        <div class="user-message">{{ message }}</div>
-                    </div>
-                {% else %}
-                    <div class="message-container bot-container">
-                        <div class="bot-message">{{ message }}</div>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-
-        <div class="message_zone">
-            <form id="formulario_ingreso" method="post">
-                <input type="text" name="texto_usuario" id="texto_usuario" autocomplete="off" placeholder="Ingrese su mensaje" class="mensaje_usuario"></input>
+        <div class="h-96 overflow-y-scroll border border-gray-300 p-4 rounded-lg bg-gray-50" id="chat-box"></div>
+        <form id="chat-form" class="mt-4">
+            <div class="flex">
+                <input type="text" id="user-input" class="flex-grow border border-gray-300 rounded-l-lg p-2" placeholder="Escribe tu pregunta" required>
                 <button type="submit">
                     <i class="fa fa-paper-plane"></i>
                 </button>
-            </form>
-        
-
-        </div>
+            </div>
+        </form>
     </div>
-
-    <script src="{{ url_for('static', filename='js/logica_chatbot_page.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#chat-form').on('submit', function(e) {
+                e.preventDefault();
+                var userInput = $('#user-input').val();
+                $('#user-input').val('');
+                $('#chat-box').append('<div class="bg-blue-600 text-white p-3 rounded-lg mb-2 self-end fade-in"><strong>Usuario:</strong> ' + userInput + '</div>');
+                
+                $.ajax({
+                    url: '/chat',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ message: userInput }),
+                    success: function(response) {
+                        $('#chat-box').append('<div class="bg-gray-300 text-black p-3 rounded-lg mb-2 self-start fade-in"><strong>Bot:</strong> ' + response.response + '</div>');
+                        $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
