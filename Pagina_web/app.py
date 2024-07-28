@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 import google.generativeai as genai
 import PyPDF2
-
+import webbrowser
+from threading import Timer
 app = Flask(__name__, static_folder="static")
 app.secret_key = 'secret_key'
 
@@ -79,5 +80,11 @@ def chat():
     response = chatbot(user_input, contenido_pdf)
     return jsonify({'response': response})
 
+def open_browser():
+    url = "http://localhost:5000"
+    webbrowser.open_new_tab(url)
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    Timer(1, open_browser).start()
+    app.run(debug=True, use_reloader=False)  # Deshabilita el cargador automático
