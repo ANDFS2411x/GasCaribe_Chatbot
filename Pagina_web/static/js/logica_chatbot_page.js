@@ -98,3 +98,4 @@ if ('webkitSpeechRecognition' in window) {
 } else {
     alert('Tu navegador no soporta reconocimiento de voz.');
 }
+
