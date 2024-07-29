@@ -34,7 +34,7 @@ form {
 form .con {
     display: -webkit-flex;
     display: flex;
-  
+  width: 100%;
     -webkit-justify-content: space-around;
     justify-content: space-around;
   
@@ -42,6 +42,9 @@ form .con {
     flex-wrap: wrap;
   
       margin: 0 auto;
+}
+.head-form{
+    width: 100%;
 }
 
 header {
@@ -108,4 +111,65 @@ header p {letter-spacing: 0.05em;}
 
 input{
   margin-bottom: 40px;
+}
+
+.parrafo_qr{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.field-set{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.redirigir_qr{
+    border: none;
+    background: none;
+    outline: none;
+    color: rgb(36, 36, 181);
+    cursor: pointer;
+    font-family: 'Abel', sans-serif;
+    font-size: 20px;
+}
+.parrafoqr{
+    font-family: 'Abel', sans-serif;
+    font-size: 20px;
+}
+
+.hidden {
+    opacity: 0;
+    z-index: -1000;
+    position: absolute;
+    top: 0;
+}
+
+.pvolv{
+    display: none;
+}
+
+.aaa{
+    color: rgb(59, 59, 218);
+    cursor: pointer;
+}
+.estilo_retornar{
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: 'Abel', sans-serif;
+    font-size: 20px;
+}
+.loco{
+   position:absolute;
+   left: 0px;
+   top:0px;
+   opacity: 0;
+   z-index: -999;
+}
+
+.cuadrar{
+    width: 80%;
+    border-radius: 40px;
 }
