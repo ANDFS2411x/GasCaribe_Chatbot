@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo_login.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+</head>
+<body background="../images/imagen_login.png">
+
+    <div class="overlay">
+        <form  method="post">
+           <div class="con">
+           <header class="head-form">
+              <h2>Inicio de sesión</h2>
+              <p>Ingrese al asesor virtual de Gases Del Caribe</p>
+           </header>
+           <br>
+           <div class="field-set">
+<div id="contenedor_correo">
+   <span class="input-item">
+      <i class="fa fa-user-circle"></i>
+    </span>
+    <input class="form-input" id="correo" name="correo" type="email" placeholder="Correo" required>
+</div>
+              <br>
+<div id="contenedor_contraseña">
+   <span class="input-item">
+      <i class="fa fa-key"></i>
+     </span>
+    <input class="form-input" type="password" name="contraseña" placeholder="Contraseña" id="contraseña" required>    
+   <span>
+</div>
+             </span>
+              <br>
+              <p class="parrafoqr" id="parrafo_qr">Ingrese con su QR <label class="redirigir_qr" id="btn_redirigir">aquí</label> </p>
+              <div class="contenedor_camara loco cuadrar">
+               <div id="your-qr-result"></div>
+               <div style="display:flex; justify-content: center; border-radius: 10px">
+                   <div id="my-qr-reader" style="width:370px; border-radius: 10px;">
+                   </div>
+               </div>   
+           </div>   
+              <p id="parrafo_volver" class="pvolv" >Ingresar con credenciales <label class="aaa">aqui</label></p>
+              <input type="submit" value="Enviar" id="boton_envio" class="log-in">
+           </div>
+          </div>          
+        </form>
+        </div>
+
+<script src="{{ url_for('static', filename='js/html5-qrcode.min.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/validacion_login.js') }}"></script>
+
+
+</body>
+</html>
